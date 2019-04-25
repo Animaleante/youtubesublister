@@ -1,0 +1,59 @@
+{
+    "kind": "youtube#playlistItemListResponse",
+    "etag": "\"XpPGQXPnxQJhLgs6enD_n8JR4Qk/u7XvH604p-_7ZFTJjKmmf1RINoo\"",
+    "nextPageToken": "CBkQAA",
+    "pageInfo": {
+        "totalResults": 1333,
+        "resultsPerPage": 25
+    },
+    "items": [
+    {
+        "kind": "youtube#playlistItem",
+        "etag": "\"XpPGQXPnxQJhLgs6enD_n8JR4Qk/v4Xn-AyynhmizNv6rgjxXpA6Lf0\"",
+        "id": "VVVtRUNsekNCRHgtdnJ0MEd1U0tCZDlnLjdRMzZqYXN3TUJJ",
+        "snippet": {
+            "publishedAt": "2019-04-16T14:10:46.000Z",
+            "channelId": "UCmEClzCBDx-vrt0GuSKBd9g",
+            "title": "Jefferson Schroeder Queimando a Língua",
+            "description": "Olá bípede, Jefferson Schoroeder traz todos seus personagens para queimar a língua e sofrer com as pimentas do Sr. K!\n\nJefferson Schroeder\nInstagram: https://www.instagram.com/schjefferson/\nTwitter: https://twitter.com/schjeff\n\nASSISTA TAMBÉM\nPlaylist Sr.K Queimando a Língua: http://bit.ly/2I6Dscb\n\nCONHEÇA A NERDSTORE\nhttp://www.nerdstore.com.br\n\nEDIÇÃO POR GAVETA FILMES\nhttp://www.gavetafilmes.com.br\n\nASSINE O CANAL DO JOVEM NERD NO YOUTUBE\nhttp://www.youtube.com/JovemNerd\n\nEi nerd! Siga o Jovem Nerd no Twitter, Facebook, YouTube e Instagram, foi o Azaghal que mandou!\nhttp://twitter.com/JovemNerd\nhttp://facebook.com/JovemNerd\nhttp://youtube.com/JovemNerd\nhttp://instagram.com/JovemNerd\nhttp://twitter.com/Azaghal",
+            "thumbnails": {
+                "default": {
+                    "url": "https://i.ytimg.com/vi/7Q36jaswMBI/default.jpg",
+                    "width": 120,
+                    "height": 90
+                },
+                "medium": {
+                    "url": "https://i.ytimg.com/vi/7Q36jaswMBI/mqdefault.jpg",
+                    "width": 320,
+                    "height": 180
+                },
+                "high": {
+                    "url": "https://i.ytimg.com/vi/7Q36jaswMBI/hqdefault.jpg",
+                    "width": 480,
+                    "height": 360
+                },
+                "standard": {
+                    "url": "https://i.ytimg.com/vi/7Q36jaswMBI/sddefault.jpg",
+                    "width": 640,
+                    "height": 480
+                },
+                "maxres": {
+                    "url": "https://i.ytimg.com/vi/7Q36jaswMBI/maxresdefault.jpg",
+                    "width": 1280,
+                    "height": 720
+                }
+            },
+            "channelTitle": "Jovem Nerd",
+            "playlistId": "UUmEClzCBDx-vrt0GuSKBd9g",
+            "position": 0,
+            "resourceId": {
+                "kind": "youtube#video",
+                "videoId": "7Q36jaswMBI"
+            }
+        },
+        "contentDetails": {
+            "videoId": "7Q36jaswMBI",
+            "videoPublishedAt": "2019-04-16T14:10:46.000Z"
+        }
+    }]
+}

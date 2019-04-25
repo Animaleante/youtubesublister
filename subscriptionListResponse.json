@@ -1,0 +1,41 @@
+{
+    "kind": "youtube#subscriptionListResponse",
+    "etag": "\"XpPGQXPnxQJhLgs6enD_n8JR4Qk/0ZSlzxh49t2M3UkDoFz-I7uKVdE\"",
+    "nextPageToken": "CDIQAA",
+    "pageInfo": {
+    "totalResults": 71,
+    "resultsPerPage": 50
+    },
+    "items": [
+    {
+        "kind": "youtube#subscription",
+        "etag": "\"XpPGQXPnxQJhLgs6enD_n8JR4Qk/S2LlNzAtLu8jd7gyhaco2cTcrzk\"",
+        "id": "_f7_K7l_MJp5PUPt1j8u-dhm6a_hJW-3_vCthiqmJ6c",
+        "snippet": {
+            "publishedAt": "2019-03-16T14:58:45.743Z",
+            "title": "Auto Auction Rebuilds",
+            "description": "Welcome to Auto Auction Rebuilds! My name is Randy Shear and I am the owner of this channel, and the content creator, and videographer / editor. I spend a lot of time trying to make this a fun channel for you, so please sit back and enjoy the ride!",
+            "resourceId": {
+                "kind": "youtube#channel",
+                "channelId": "UCpw-BHqS4VEE64kSaXhhJ7g"
+            },
+            "channelId": "UCQerVI1UoyN9vmvy6HU8WlQ",
+            "thumbnails": {
+                "default": {
+                    "url": "https://yt3.ggpht.com/-iLUR60QFNr8/AAAAAAAAAAI/AAAAAAAAAAA/gzS8LZ12-Q8/s88-c-k-no-mo-rj-c0xffffff/photo.jpg"
+                },
+                "medium": {
+                    "url": "https://yt3.ggpht.com/-iLUR60QFNr8/AAAAAAAAAAI/AAAAAAAAAAA/gzS8LZ12-Q8/s240-c-k-no-mo-rj-c0xffffff/photo.jpg"
+                },
+                "high": {
+                    "url": "https://yt3.ggpht.com/-iLUR60QFNr8/AAAAAAAAAAI/AAAAAAAAAAA/gzS8LZ12-Q8/s800-c-k-no-mo-rj-c0xffffff/photo.jpg"
+                }
+            }
+        },
+        "contentDetails": {
+            "totalItemCount": 1681,
+            "newItemCount": 10,
+            "activityType": "all"
+        }
+    }]
+}

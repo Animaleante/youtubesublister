@@ -1,0 +1,56 @@
+{
+    "kind": "youtube#channelListResponse",
+    "etag": "\"XpPGQXPnxQJhLgs6enD_n8JR4Qk/U8lagpSbvHuiDBl3B_f930XUpdg\"",
+    "pageInfo": {
+        "totalResults": 1,
+        "resultsPerPage": 1
+    },
+    "items": [
+        {
+        "kind": "youtube#channel",
+        "etag": "\"XpPGQXPnxQJhLgs6enD_n8JR4Qk/6EDcQ0zr4gjA_OxNnrp2XpTf5yE\"",
+        "id": "UCpw-BHqS4VEE64kSaXhhJ7g",
+        "snippet": {
+            "title": "Auto Auction Rebuilds",
+            "description": "Welcome to Auto Auction Rebuilds! My name is Randy Shear and I am the owner of this channel, and the content creator, and videographer / editor. I spend a lot of time trying to make this a fun channel for you, so please sit back and enjoy the ride!",
+            "customUrl": "randyshear",
+            "publishedAt": "2007-03-11T05:05:28.000Z",
+            "thumbnails": {
+                "default": {
+                    "url": "https://yt3.ggpht.com/a-/AAuE7mDJ8XxFLKKzRozuo3WIsAmV7Yln3TOAe-ouIA=s88-mo-c-c0xffffffff-rj-k-no",
+                    "width": 88,
+                    "height": 88
+                },
+                "medium": {
+                    "url": "https://yt3.ggpht.com/a-/AAuE7mDJ8XxFLKKzRozuo3WIsAmV7Yln3TOAe-ouIA=s240-mo-c-c0xffffffff-rj-k-no",
+                    "width": 240,
+                    "height": 240
+                },
+                "high": {
+                    "url": "https://yt3.ggpht.com/a-/AAuE7mDJ8XxFLKKzRozuo3WIsAmV7Yln3TOAe-ouIA=s800-mo-c-c0xffffffff-rj-k-no",
+                    "width": 800,
+                    "height": 800
+                }
+            },
+            "localized": {
+                "title": "Auto Auction Rebuilds",
+                "description": "Welcome to Auto Auction Rebuilds! My name is Randy Shear and I am the owner of this channel, and the content creator, and videographer / editor. I spend a lot of time trying to make this a fun channel for you, so please sit back and enjoy the ride!"
+            },
+            "country": "US"
+        },
+        "contentDetails": {
+            "relatedPlaylists": {
+                "uploads": "UUpw-BHqS4VEE64kSaXhhJ7g",
+                "watchHistory": "HL",
+                "watchLater": "WL"
+            }
+        },
+        "statistics": {
+            "viewCount": "32094141",
+            "commentCount": "0",
+            "subscriberCount": "151003",
+            "hiddenSubscriberCount": false,
+            "videoCount": "1681"
+        }
+    }]
+}
