@@ -66,7 +66,7 @@ GoogleService.prototype.authorize = function(credentials) {
             oauth2Client.credentials = JSON.parse(token);
             return oauth2Client;
         })
-        .catch(err => {
+        .catch(() => {
             return this.getNewToken(oauth2Client);
         });
 }
@@ -135,7 +135,7 @@ GoogleService.prototype.getNewToken = function(oauth2Client) {
 *
 * @param {Object} token The token to store to disk.
 */
-function storeToken(token) {
+GoogleService.prototype.storeToken = function(token) {
     try {
         fs.mkdirSync(TOKEN_DIR);
     } catch (err) {
@@ -150,6 +150,6 @@ function storeToken(token) {
     });
 
     console.log('Token stored to ' + TOKEN_PATH);
-}
+};
 
 module.exports = new GoogleService();

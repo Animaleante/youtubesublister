@@ -1,12 +1,15 @@
-const gService = require('./services/googleService');
-const ytService = require('./services/youtubeService');
+// const gService = require('./services/googleService');
+// const ytService = require('./services/youtubeService');
+const sqlService = require('./services/sqliteService');
 
+/*
 gService.login().then(auth => {
     ytService.setAuth(auth);
     ytService.getSubscriptions();        
-});
+}); */
 
-/*async function runSample() {
+/*
+async function runSample() {
     const res = await blogger.blogs.get(params);
     console.log(`The blog url is ${res.data.url}`);
 }

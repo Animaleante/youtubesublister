@@ -16,20 +16,17 @@ YoutubeService.prototype.setAuth = function(auth) {
 YoutubeService.prototype.getSubscriptions = function(pageToken) {
     return this.service.subscriptions.list({
         auth: this.auth,
-        // "part": "snippet,contentDetails",
-        part: "snippet",
-        "maxResults": 50,
-        "pageToken": pageToken,
-        "mine": true
+        'maxResults': 50,
+        'mine': true,
+        pageToken,
+        // 'part': 'snippet,contentDetails',
+        'part': 'snippet'
     })
     .then(response => {
-        if(!this.subscriptions)
-            this.subscriptions = response.data.items;
-        else
-            this.subscriptions = this.subscriptions.concat(response.data.items);
+        if (!this.subscriptions) this.subscriptions = response.data.items;
+        else this.subscriptions = this.subscriptions.concat(response.data.items);
 
-        if(response.data.nextPageToken)
-            this.getSubscriptions(response.data.nextPageToken);
+        if (response.data.nextPageToken) this.getSubscriptions(response.data.nextPageToken);
         else {
             console.log('Amount of subscriptions is: %s.', this.subscriptions.length);
 
@@ -44,6 +41,7 @@ YoutubeService.prototype.getSubscriptions = function(pageToken) {
 
 YoutubeService.prototype.getChannelsInfo = function() {
     let promises = [];
+
     this.subscriptions.forEach(({snippet}) => {
         // console.log('Loading info for channel: ' + snippet.title);
         promises.push(this.getChannelInfo(snippet.resourceId.channelId));
@@ -51,71 +49,71 @@ YoutubeService.prototype.getChannelsInfo = function() {
 
     Promise.all(promises)
         .then(() => {
-            console.log("Done loading channels' info");
+            console.log('Done loading channels\' info');
             this.getPlaylistsItems();
         })
         .catch((err) => {
-            console.error("Execute error", err); 
+            console.error('Execute error', err); 
         });
 };
 
 YoutubeService.prototype.getChannelInfo = function(channelId) {
     return this.service.channels.list({
         auth: this.auth,
-        // "part": "snippet,contentDetails,statistics",
-        "part": "contentDetails",
-        "id": channelId
+        'id': channelId,
+        // 'part': 'snippet,contentDetails,statistics',
+        'part': 'contentDetails'
     })
     .then((response) => {
         this.channels.push(response.data.items[0]);
     })
     .catch((err) => { 
-        console.error("Execute error", err); 
+        console.error('Execute error', err); 
     });
 };
 
 YoutubeService.prototype.getPlaylistsItems = function() {
     let promises = [];
+
     this.channels.forEach((channel) => {
         promises.push(this.getPlaylistItems(channel.contentDetails.relatedPlaylists.uploads));
     });
 
     Promise.all(promises)
         .then(() => {
-            console.log("Done loading videos' info");
+            console.log('Done loading videos\' info');
             this.sortVideos();
 
-            console.log(this.videos.slice(0,4));
+            console.log(this.videos.slice(0, 4));
         })
         .catch((err) => {
-            console.error("Execute error", err); 
+            console.error('Execute error', err); 
         });
 };
 
 YoutubeService.prototype.getPlaylistItems = function(playlistId) {
     return this.service.playlistItems.list({
         auth: this.auth,
-        // "part": "snippet,contentDetails",
-        "part": "snippet",
-        "maxResults": 25,
+        'maxResults': 25,
+        // 'part': 'snippet,contentDetails',
+        'part': 'snippet',
         playlistId
     })
     .then((response) => {
         this.videos = this.videos.concat(response.data.items);
     })
     .catch((err) => { 
-        console.error("Execute error", err); 
+        console.error('Execute error', err); 
     });
 };
 
 YoutubeService.prototype.sortVideos = function() {
-    this.videos.sort((a,b) => {
+    this.videos.sort((a, b) => {
         let aDate = a.snippet.publishedAt;
         let bDate = b.snippet.publishedAt;
-        if(aDate > bDate)
-            return -1;
-        else if(aDate < bDate)
-            return 1;
+
+        if (aDate > bDate) return -1;
+        else if (aDate < bDate) return 1;
 
         return 0;
     });
