@@ -91,6 +91,10 @@ YoutubeService.prototype.getPlaylistsItems = function() {
             console.log('Done loading videos\' info');
             this.sortVideos();
 
+            this.videos.forEach((video) => {
+                this.sqlService.insertVideo(video);
+            });
+
             // console.log(this.videos.slice(0, 4));
         })
         .catch((err) => {

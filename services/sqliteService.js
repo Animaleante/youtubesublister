@@ -62,8 +62,8 @@ SQliteService.prototype.createTables = function(db) {
                 thumb_default TEXT NOT NULL,
                 thumb_medium TEXT NOT NULL,
                 thumb_high TEXT NOT NULL,
-                thumb_standard TEXT NOT NULL,
-                thumb_maxres TEXT NOT NULL,
+                thumb_standard TEXT,
+                thumb_maxres TEXT,
                 FOREIGN KEY (channel_id) REFERENCES channels (id)
                 ON DELETE CASCADE ON UPDATE NO ACTION
         )`);
@@ -79,7 +79,7 @@ SQliteService.prototype.insertMultSubscriptions = function(subscriptionsInfo) {
     ]);
 
     db.serialize(() => {
-        db.run('TRUNACTE TABLE subscriptions')
+        db.run('DELETE FROM subscriptions')
           .run(`INSERT INTO subscriptions 
                 (id, channel_id)
                 VALUES ${placeholders}`, [].concat.apply([], subscriptions));
@@ -136,10 +136,11 @@ SQliteService.prototype.insertChannel = function(channelInfo) {
 SQliteService.prototype.insertVideo = function(videoInfo) {
     let db = this.getDB();
 
-    db.run(`INSERT INTO videos 
+    try {
+        db.run(`INSERT INTO videos 
         (id, channel_id, title, description, published_at, thumb_default, thumb_medium, thumb_high, thumb_standard, thumb_maxres) 
         VALUES (?,?,?,?,?,?,?,?,?,?)`, [
-            videoInfo.contentDetails.videoId,
+            videoInfo.snippet.resourceId.videoId,
             videoInfo.snippet.channelId,
             videoInfo.snippet.title,
             videoInfo.snippet.description,
@@ -147,8 +148,12 @@ SQliteService.prototype.insertVideo = function(videoInfo) {
             videoInfo.snippet.thumbnails.default.url,
             videoInfo.snippet.thumbnails.medium.url,
             videoInfo.snippet.thumbnails.high.url,
-            videoInfo.snippet.thumbnails.standard.url,
-            videoInfo.snippet.thumbnails.maxres.url
+            videoInfo.snippet.thumbnails.standard
+                ? videoInfo.snippet.thumbnails.standard.url 
+                : null,
+            videoInfo.snippet.thumbnails.maxres 
+                ? videoInfo.snippet.thumbnails.maxres.url 
+                : null
         ], (err) => {
             if (err) {
                 console.error(err);
@@ -156,7 +161,11 @@ SQliteService.prototype.insertVideo = function(videoInfo) {
             }
         });
 
-    db.close();
+        db.close();
+    } catch (err) {
+        console.error(err);
+        console.log(videoInfo);
+    }
 };
 
 module.exports = new SQliteService();
