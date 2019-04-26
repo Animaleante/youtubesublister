@@ -4,6 +4,8 @@ let YoutubeService = function() {
     this.service = google.youtube('v3');
 
     this.auth = null;
+    this.sqlService = null;
+
     this.subscriptions = null;
     this.channels = [];
     this.videos = [];
@@ -11,6 +13,10 @@ let YoutubeService = function() {
 
 YoutubeService.prototype.setAuth = function(auth) {
     this.auth = auth;
+};
+
+YoutubeService.prototype.setDbService = function(sqlService) {
+    this.sqlService = sqlService;
 };
 
 YoutubeService.prototype.getSubscriptions = function(pageToken) {
@@ -30,21 +36,21 @@ YoutubeService.prototype.getSubscriptions = function(pageToken) {
         else {
             console.log('Amount of subscriptions is: %s.', this.subscriptions.length);
 
+            this.sqlService.insertMultSubscriptions(this.subscriptions);
             this.getChannelsInfo();
         }
     })
     .catch(error => {
         console.error(error);
-        console.log('The API returned an error: ' + error);
+        console.error('The API returned an error: ' + error);
     });
 };
 
 YoutubeService.prototype.getChannelsInfo = function() {
     let promises = [];
 
-    this.subscriptions.forEach(({snippet}) => {
-        // console.log('Loading info for channel: ' + snippet.title);
-        promises.push(this.getChannelInfo(snippet.resourceId.channelId));
+    this.subscriptions.forEach((subscription) => {
+        promises.push(this.getChannelInfo(subscription.snippet.resourceId.channelId));
     });
 
     Promise.all(promises)
@@ -62,10 +68,11 @@ YoutubeService.prototype.getChannelInfo = function(channelId) {
         auth: this.auth,
         'id': channelId,
         // 'part': 'snippet,contentDetails,statistics',
-        'part': 'contentDetails'
+        'part': 'snippet,contentDetails'
     })
     .then((response) => {
         this.channels.push(response.data.items[0]);
+        this.sqlService.insertChannel(response.data.items[0]);
     })
     .catch((err) => { 
         console.error('Execute error', err); 
@@ -84,7 +91,7 @@ YoutubeService.prototype.getPlaylistsItems = function() {
             console.log('Done loading videos\' info');
             this.sortVideos();
 
-            console.log(this.videos.slice(0, 4));
+            // console.log(this.videos.slice(0, 4));
         })
         .catch((err) => {
             console.error('Execute error', err); 

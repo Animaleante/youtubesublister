@@ -84,3 +84,4 @@ typings/
 .dynamodb/
 
 client_secret.json
+db/test.db

@@ -1,12 +1,15 @@
-// const gService = require('./services/googleService');
-// const ytService = require('./services/youtubeService');
+const gService = require('./services/googleService');
+const ytService = require('./services/youtubeService');
 const sqlService = require('./services/sqliteService');
 
-/*
+sqlService.init('./db/test.db');
+
 gService.login().then(auth => {
     ytService.setAuth(auth);
+    ytService.setDbService(sqlService);
     ytService.getSubscriptions();        
-}); */
+});
+
 
 /*
 async function runSample() {

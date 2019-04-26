@@ -1,5 +1,6 @@
 // const fs = require('fs');
-const fs = require('fs').promises;
+const fs = require('fs');
+const fsPromises = require('fs').promises;
 const readline = require('readline');
 const {google} = require('googleapis');
 const OAuth2 = google.auth.OAuth2;
@@ -15,7 +16,7 @@ let GoogleService = function() {
 }
 
 // GoogleService.prototype.init = function(callback) {
-GoogleService.prototype.login = async function() {
+GoogleService.prototype.login = function() {
     // Load client secrets from a local file.
     /* fs.readFile('client_secret.json', (err, content) => {
         if (err) {
@@ -26,7 +27,7 @@ GoogleService.prototype.login = async function() {
         // authorize(JSON.parse(content), getChannel);
         this.authorize(JSON.parse(content), callback);
     }); */
-    return await fs.readFile('client_secret.json')
+    return fsPromises.readFile('client_secret.json')
         .then(content => {
             // Authorize a client with the loaded credentials, then call the YouTube API.
             // authorize(JSON.parse(content), getChannel);
@@ -61,7 +62,7 @@ GoogleService.prototype.authorize = function(credentials) {
             callback();
         }
     }); */
-    return fs.readFile(TOKEN_PATH)
+    return fsPromises.readFile(TOKEN_PATH)
         .then(token => {
             oauth2Client.credentials = JSON.parse(token);
             return oauth2Client;
@@ -148,8 +149,6 @@ GoogleService.prototype.storeToken = function(token) {
         if (err) throw err;
         console.log('Token stored to ' + TOKEN_PATH);
     });
-
-    console.log('Token stored to ' + TOKEN_PATH);
 };
 
 module.exports = new GoogleService();
